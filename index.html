@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Projects</title>
+    <script src="https://kit.fontawesome.com/6282061210.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --accent-color: #2ea44f; /* GitHub Green */
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; align-items: center; padding: 50px 20px; }
+        h1 { margin-bottom: 40px; }
+        .menu-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; width: 100%; max-width: 1000px; }
+        .card { background: var(--card-bg); padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-decoration: none; color: inherit; text-align: center; transition: transform 0.2s; border: 1px solid #e1e4e8; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 15px; display: block; }
+        .card h3 { margin: 10px 0; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+    <h1>Project Dashboard</h1>
+
+    <div class="menu-container" id="menu-grid">
+        <!-- The menu items will be injected here automatically -->
+    </div>
+
+    <script>
+        /* --- EDIT YOUR PROJECTS HERE --- */
+        const urlRoot="https://github.com/dvidianjh-cyber/";
+        const myProjects = [
+            { title: "Project Alpha", url: "alpha", icon: "fa-solid fa-code" },
+            { title: "Data Visualizer", url: "data-viz", icon: "fa-solid fa-chart-line" },
+            { title: "To-Do App", url: "todo", icon: "fa-solid fa-list-check" },
+            { title: "New Experiment", url: "#", icon: "fa-solid fa-flask" }
+        ];
+        /* ------------------------------- */
+
+        const grid = document.getElementById('menu-grid');
+        myProjects.forEach(project => {
+            const card = document.createElement('a');
+            card.className = 'card';
+            card.href = urlRoot + project.url;
+            card.innerHTML = `
+                <i class="${project.icon}"></i>
+                <h3>${project.title}</h3>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
